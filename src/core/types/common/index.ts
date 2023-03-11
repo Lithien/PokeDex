@@ -6,20 +6,20 @@ export interface ApiResource {
 
 export interface Description {
   description: string
-  language: Languages
+  language: NamedAPIResource
 }
 
 export interface Effect {
   effect: string
-  language: Languages
+  language: NamedAPIResource
 }
 
 export interface Encounter {
   min_level: number
   max_level: number
-  condition_values: NamedAPIResource
+  condition_values: NamedAPIResource[]
   chance: number
-  method: any
+  method: NamedAPIResource
 }
 
 export interface FlavorText {
@@ -70,4 +70,12 @@ export interface NamedAPIResource {
 export interface Name {
   name: string
   language: NamedAPIResource
+}
+
+
+export interface ItemList {
+  count: number
+  next: string
+  previous: string
+  results: NamedAPIResource[]
 }

@@ -1,4 +1,4 @@
-import { Effect, Name, NamedAPIResource, VerboseEffect } from "../common"
+import { ApiResource, Effect, FlavorText, Name, NamedAPIResource, VerboseEffect, VersionEncounterDetail, VersionGameIndex, GenerationGameIndex } from "../common"
 
 export interface Abilities {
   id: number
@@ -10,6 +10,339 @@ export interface Abilities {
   effect_changes: AbilityEffectChange[]
   flavor_text_entries: AbilityFlavorText[]
   pokemon: AbilityPokemon[]
+}
+
+export interface Characteristics {
+  id: number
+  gene_modulo: number
+  possible_values: number[]
+  highest_stat: NamedAPIResource
+  descriptions: Description[]
+}
+
+export interface EggGroup {
+  id: number
+  name: string
+  names: Name[]
+  pokemon_species: NamedAPIResource
+}
+
+export interface Gender {
+  id: number
+  name: string
+  pokemon_species_details: PokemonSpeciesGender[]
+  required_for_evolution: NamedAPIResource[]
+}
+
+export interface GrowthRates {
+  id: number
+  name: string
+  formula: string
+  descriptions: Description[]
+  levels: GrowthRateExperienceLevel[]
+  pokemon_species: NamedAPIResource
+}
+
+export interface Nature {
+  id: number
+  name: string
+  decreased_stat: NamedAPIResource
+  increased_stat: NamedAPIResource
+  hates_flavor: NamedAPIResource
+  likes_flavor: NamedAPIResource
+  pokeathlon_stat_changes: NatureStatChange[]
+  move_battle_style_preferences: MoveBattlestylePreference[]
+  names: Name[]
+}
+
+export interface PokeathlonStats {
+  id: number
+  name: string
+  names: Name[]
+  affecting_natures: NaturePokeathlonStatAffectSets
+}
+
+export interface Pokemon {
+  id: number
+  name: string
+  base_experience: number
+  height: number
+  is_default: boolean
+  order: number
+  weight: number
+  abilities: PokemonAbility[]
+  forms: NamedAPIResource
+  game_indices: VersionGameIndex[]
+  held_items: PokemonHeldItem[]
+  location_area_encounters: string
+  moves: PokemonMove[]
+  past_types: PokemonTypePast[]
+  sprites: PokemonSprites
+  species: NamedAPIResource
+  stats: PokemonStat[]
+  types: PokemonType[]
+}
+
+export interface PokemonLocationAreas {
+  location_area: NamedAPIResource
+  version_details: VersionEncounterDetail[]
+}
+
+export interface PokemonColors {
+  id: number
+  name: string
+  names: Name[]
+  pokemon_species: NamedAPIResource[]
+}
+
+export interface PokemonForms {
+  id: number
+  name: string
+  order: number
+  form_order: number
+  is_default: boolean
+  is_battle_only: boolean
+  is_mega: boolean
+  form_name: string
+  pokemon: NamedAPIResource
+  types: PokemonFormType[]
+  sprites: PokemonFormSprites
+  version_group: NamedAPIResource
+  names: Name[]
+  form_names: Name[]
+}
+
+export interface PokemonHabitats {
+  id: number
+  name: string
+  names: Name[]
+  pokemon_species: NamedAPIResource[]
+}
+
+export interface PokemonShapes {
+  id: number
+  name: string
+  awesome_names: AwesomeNames[]
+  names: Name[]
+  pokemon_species: NamedAPIResource[]
+}
+
+export interface PokemonSpecies {
+  id: number
+  name: string
+  order: number
+  gender_rate: number
+  capture_rate: number
+  base_happiness: number
+  is_baby: boolean
+  is_legendary: boolean
+  is_mithycal: boolean
+  hatch_encounter: number
+  has_gender_differences: boolean
+  forms_switchable: boolean
+  growth_rate: NamedAPIResource
+  pokedex_numbers: PokemonSpeciesDexEntry[]
+  egg_groups: NamedAPIResource[]
+  color: NamedAPIResource
+  shape: NamedAPIResource
+  envolves_form_species: NamedAPIResource
+  evolution_chain: NamedAPIResource
+  habitat: NamedAPIResource
+  generation: NamedAPIResource
+  names: Name[]
+  pal_park_encounters: PalParkEncounterArea[]
+  flavor_text_entries: FlavorText[]
+  form_description: Description[]
+  genera: Genus[]
+  varieties: PokemonSpeciesVariety[]
+}
+
+export interface Stats {
+  id: number
+  name: string
+  game_index: number
+  is_battle_only: boolean
+  affecting_moves: MoveStatAffectSets
+  affecting_natures: NatureStatAffectSets
+  characteristics: ApiResource[]
+  move_damage_class: NamedAPIResource
+  names: Name[]
+}
+
+export interface Types {
+  id: number
+  name: string
+  damage_relations: TypeRelations
+  past_damage_relations: TypeRelationsPast[]
+  game_indices: GenerationGameIndex[]
+  generation: NamedAPIResource
+  move_damage_class: NamedAPIResource
+  names: Name[]
+  pokemon: TypePokemon[]
+  moves: NamedAPIResource[]
+}
+
+interface TypePokemon {
+  slot: number
+  pokemon: NamedAPIResource
+}
+
+interface TypeRelations {
+  no_damage_to: NamedAPIResource[]
+  half_damage_to: NamedAPIResource[]
+  double_damage_to: NamedAPIResource[]
+  no_damage_from: NamedAPIResource[]
+  half_damage_from: NamedAPIResource[]
+  double_damage_from: NamedAPIResource[]
+}
+
+interface TypeRelationsPast {
+  generation: NamedAPIResource
+  damage_relations: TypeRelations
+}
+
+interface MoveStatAffectSets {
+  increase: MoveStatAffect[]
+  decrease: MoveStatAffect[]
+}
+
+interface MoveStatAffect {
+  change: number
+  move: NamedAPIResource
+}
+
+interface NatureStatAffectSets {
+  increase: NamedAPIResource[]
+  decrease: NamedAPIResource[]
+}
+
+interface Genus {
+  genus: string
+  language: NamedAPIResource
+}
+
+interface PokemonSpeciesDexEntry {
+  entry_number: number
+  pokedex: NamedAPIResource
+}
+
+interface PalParkEncounterArea {
+  base_score: number
+  rate: number
+  area: NamedAPIResource
+}
+
+interface PokemonSpeciesVariety {
+  is_default: boolean
+  pokemon: NamedAPIResource
+}
+
+interface AwesomeNames {
+  awesome_name: string
+  language: NamedAPIResource
+}
+
+interface PokemonFormSprites {
+  front_default: string
+  front_shiny: string
+  back_default: string
+  back_shiny: string
+}
+
+
+interface PokemonAbility {
+  is_hidden: boolean
+  slot: number
+  ability: NamedAPIResource
+}
+
+interface PokemonType {
+  slot: number
+  type: NamedAPIResource
+}
+
+interface PokemonFormType {
+  slot: number
+  type: NamedAPIResource
+}
+
+interface PokemonTypePast {
+  generation: NamedAPIResource
+  types: PokemonType[]
+}
+
+interface PokemonHeldItem {
+  item: NamedAPIResource
+  version_details: PokemonHeldItemVersion[]
+}
+
+interface PokemonHeldItemVersion {
+  version: NamedAPIResource
+  rarity: number
+}
+
+interface PokemonMove {
+  move: NamedAPIResource
+  version_group_details: PokemonMoveVersion[]
+}
+
+interface PokemonMoveVersion {
+  move_learn_method: NamedAPIResource
+  version_group: NamedAPIResource
+  level_learned_at: number
+}
+
+interface PokemonStat {
+  stat: NamedAPIResource
+  effort: number
+  base_stat: number
+}
+
+interface PokemonSprites {
+  front_default: string
+  front_shiny: string
+  front_female: string
+  front_shiny_female: string
+  back_default: string
+  back_shiny: string
+  back_female: string
+  back_female_shiny: string
+}
+
+interface NaturePokeathlonStatAffectSets {
+  increase: NaturePokeathlonstatAffect[]
+  decrease: NaturePokeathlonstatAffect[]
+}
+
+interface NaturePokeathlonstatAffect {
+  max_change: number
+  nature: NamedAPIResource
+}
+
+interface GrowthRateExperienceLevel {
+  level: number
+  experience: number
+}
+
+interface PokemonSpeciesGender {
+  rate: number
+  pokemon_species: NamedAPIResource
+}
+
+interface NatureStatChange {
+  max_change: number
+  pokeathlon_stat: NamedAPIResource
+}
+
+interface MoveBattlestylePreference {
+  low_hp_preference: number
+  high_hp_preference: number
+  move_battle_style: number
+}
+
+interface Description {
+  description: string
+  language: NamedAPIResource
 }
 
 interface AbilityEffectChange {

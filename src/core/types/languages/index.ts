@@ -1,4 +1,4 @@
-import { NamedAPIResource } from "../common"
+import { Name } from "../common"
 
 export interface Languages {
   id: number
@@ -6,5 +6,5 @@ export interface Languages {
   official: boolean
   iso639: string
   iso3166: string
-  names: NamedAPIResource[]
+  names: Name[]
 }
