@@ -298,7 +298,7 @@ interface PokemonStat {
   base_stat: number
 }
 
-interface PokemonSprites {
+export interface PokemonSprites {
   front_default: string
   front_shiny: string
   front_female: string
@@ -306,7 +306,23 @@ interface PokemonSprites {
   back_default: string
   back_shiny: string
   back_female: string
-  back_female_shiny: string
+  back_shiny_female: string
+}
+
+export interface PokemonSpritesOrdered {
+  front_default: PokemonSprite
+  front_shiny: PokemonSprite
+  front_female: PokemonSprite
+  front_shiny_female: PokemonSprite
+  back_default: PokemonSprite
+  back_shiny: PokemonSprite
+  back_female: PokemonSprite
+  back_shiny_female: PokemonSprite
+}
+
+interface PokemonSprite {
+  img: string
+  description: string
 }
 
 interface NaturePokeathlonStatAffectSets {
