@@ -71,11 +71,3 @@ export interface Name {
   name: string
   language: NamedAPIResource
 }
-
-
-export interface ItemList {
-  count: number
-  next: string
-  previous: string
-  results: NamedAPIResource[]
-}

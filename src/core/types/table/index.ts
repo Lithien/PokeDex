@@ -1,4 +1,4 @@
-import { ItemList } from "../common"
+import { NamedAPIResource } from "../common"
 
 export interface TableProps {
   lang?: string
@@ -7,7 +7,7 @@ export interface TableProps {
 }
 
 export interface TableResponse {
-  results: Array<ItemList>
+  results: NamedAPIResource[]
   count: number
   next: string
   previous: string

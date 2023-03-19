@@ -1,27 +1,22 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import { PokemonService } from './core/services/pokemon'
-import TableList from './components/table'
-import { TableResponse } from './core/types'
+import Header from './components/layout/header'
+import PokemonList from './components/list'
+import PokemonDetail from './components/pokemon'
 
 
 function App() {
-  const [data, setData] = useState<TableResponse>()
-  
-  useEffect(() => {
-    // PokemonService.getPokemonByName('ditto').then(response => console.log(response)).catch(e => console.log(e))
-    PokemonService.getAllPokemons({ limit: 1000 })
-    .then(response => setData(response))
-    .catch(e => console.log(e))
-  }, [])
-  
-  
 
   return (
-    <div className="App">
-      <TableList data={data} />
-    </div>
+    <>
+      <Header />
+      <div className='container mx-auto'>
+        <Routes>
+          <Route path='/list' element={<PokemonList />} />
+          <Route path='/list/pokemon/:pokemonId' element={<PokemonDetail />} />
+        </Routes>
+      </div>
+    </>
   )
 }
 
