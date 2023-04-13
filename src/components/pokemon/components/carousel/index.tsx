@@ -1,17 +1,17 @@
-import { PokemonSprites, PokemonSpritesOrdered } from "../../../../core/types"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Pagination } from "swiper"
-import "swiper/css"
-import "swiper/css/pagination"
-import "swiper/css/navigation"
-import { useState } from "react"
+import { type PokemonSprites, type PokemonSpritesOrdered } from '../../../../core/types'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination } from 'swiper'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import { useState } from 'react'
 
 interface CarouselSpritesProps {
   sprites: PokemonSprites
 }
 
 const CarouselSprites = ({ sprites }: CarouselSpritesProps) => {
-  const [spritesReorder,] = useState<PokemonSpritesOrdered>({
+  const [spritesReorder] = useState<PokemonSpritesOrdered>({
     front_default: { img: sprites.front_default, description: 'Front' },
     back_default: { img: sprites.back_default, description: 'Back' },
     front_female: { img: sprites.front_female, description: 'Front Female' },
@@ -19,7 +19,7 @@ const CarouselSprites = ({ sprites }: CarouselSpritesProps) => {
     front_shiny: { img: sprites.front_shiny, description: 'Front Shiny' },
     back_shiny: { img: sprites.back_shiny, description: 'Back Shiny' },
     front_shiny_female: { img: sprites.front_shiny_female, description: 'Front Female Shiny' },
-    back_shiny_female: { img: sprites.back_shiny_female, description: 'Back Female Shiny' },
+    back_shiny_female: { img: sprites.back_shiny_female, description: 'Back Female Shiny' }
   })
   return (
     <Swiper
