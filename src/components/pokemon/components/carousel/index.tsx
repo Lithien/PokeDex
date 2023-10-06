@@ -1,4 +1,4 @@
-import { type PokemonSprites, type PokemonSpritesOrdered } from '../../../../core/types'
+import { PokemonSprite, type PokemonSprites } from '../../../../core/types'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper'
 import 'swiper/css'
@@ -11,16 +11,17 @@ interface CarouselSpritesProps {
 }
 
 const CarouselSprites = ({ sprites }: CarouselSpritesProps) => {
-  const [spritesReorder] = useState<PokemonSpritesOrdered>({
-    front_default: { img: sprites.front_default, description: 'Front' },
-    back_default: { img: sprites.back_default, description: 'Back' },
-    front_female: { img: sprites.front_female, description: 'Front Female' },
-    back_female: { img: sprites.back_female, description: 'Back Female' },
-    front_shiny: { img: sprites.front_shiny, description: 'Front Shiny' },
-    back_shiny: { img: sprites.back_shiny, description: 'Back Shiny' },
-    front_shiny_female: { img: sprites.front_shiny_female, description: 'Front Female Shiny' },
-    back_shiny_female: { img: sprites.back_shiny_female, description: 'Back Female Shiny' }
-  })
+  const [spritesReorder] = useState<PokemonSprite[]>([
+    { img: sprites.front_default, description: 'Front' },
+    { img: sprites.back_default, description: 'Back' },
+    { img: sprites.front_female, description: 'Front Female' },
+    { img: sprites.back_female, description: 'Back Female' },
+    { img: sprites.front_shiny, description: 'Front Shiny' },
+    { img: sprites.back_shiny, description: 'Back Shiny' },
+    { img: sprites.front_shiny_female, description: 'Front Female Shiny' },
+    { img: sprites.back_shiny_female, description: 'Back Female Shiny' }
+  ])
+
   return (
     <Swiper
       pagination={{
@@ -33,7 +34,7 @@ const CarouselSprites = ({ sprites }: CarouselSpritesProps) => {
       style={{ width: '256px' }}
       loop={true}
     >
-      {spritesReorder && Object.values(spritesReorder).filter(sprite => sprite !== null).map((sprite, index) => (
+      {spritesReorder.filter(sprite => sprite.img !== null).map((sprite, index) => (
         <SwiperSlide className="duration-700 ease-in-out" data-carousel-item key={window.crypto.randomUUID()}>
           <>
             <h6 className="text-center">{sprite.description}</h6>

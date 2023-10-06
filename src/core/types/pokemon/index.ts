@@ -320,7 +320,7 @@ export interface PokemonSpritesOrdered {
   back_shiny_female: PokemonSprite
 }
 
-interface PokemonSprite {
+export interface PokemonSprite {
   img: string
   description: string
 }
