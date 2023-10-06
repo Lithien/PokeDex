@@ -292,10 +292,11 @@ interface PokemonMoveVersion {
   level_learned_at: number
 }
 
-interface PokemonStat {
+export interface PokemonStat {
   stat: NamedAPIResource
   effort: number
   base_stat: number
+  max_stat?: number
 }
 
 export interface PokemonSprites {

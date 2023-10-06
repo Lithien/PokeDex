@@ -1,9 +1,10 @@
 import { PokemonSprite, type PokemonSprites } from '../../../../core/types'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination } from 'swiper'
+import { EffectFlip, Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
+import 'swiper/css/effect-flip'
 import { useState } from 'react'
 
 interface CarouselSpritesProps {
@@ -27,19 +28,21 @@ const CarouselSprites = ({ sprites }: CarouselSpritesProps) => {
       pagination={{
         dynamicBullets: true
       }}
-      navigation={true}
-      modules={[Pagination, Navigation]}
+      effect={'flip'}
+      grabCursor
+      navigation
+      modules={[Pagination, Navigation, EffectFlip]}
       slidesPerView={1}
-      centeredSlides={true}
+      centeredSlides
       style={{ width: '256px' }}
       loop={true}
     >
       {spritesReorder.filter(sprite => sprite.img !== null).map((sprite, index) => (
-        <SwiperSlide className="duration-700 ease-in-out" data-carousel-item key={window.crypto.randomUUID()}>
+        <SwiperSlide key={window.crypto.randomUUID()} >
           <>
             <h6 className="text-center">{sprite.description}</h6>
             <img
-              className="h-64 w-64"
+              className="h-36 w-36"
               key={index}
               src={sprite.img}
               alt={`sprite ${index}`}
