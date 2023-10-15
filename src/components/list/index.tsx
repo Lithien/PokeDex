@@ -4,7 +4,7 @@ function PokemonList() {
   const { setSearchQuery, searchQuery, filteredPokemon, redirectToPokemon, getPokemons, pokemonList } = usePokemonList();
 
   return (
-    <div>
+    <div className='container mx-auto'>
       <h1 className="text-4xl font-bold text-red-500 text-center my-4">PokedexGo</h1>
 
       <div className="flex items-center justify-center my-4">
@@ -18,7 +18,7 @@ function PokemonList() {
         />
       </div>
 
-      <div className="flex flex-wrap justify-start">
+      <div className="flex flex-wrap justify-between">
         {filteredPokemon.map((pokemon) => (
           <div key={window.crypto.randomUUID()} className="flex items-start justify-center w-1/12 xs:w-1/2 p-2 min-w-fit">
             <div onClick={() => redirectToPokemon(pokemon.url)} className="cursor-pointer border border-gray-300 rounded-lg p-2">

@@ -24,10 +24,7 @@ const CarouselSprites = ({ sprites }: CarouselSpritesProps) => {
   ])
 
   return (
-    <Swiper
-      pagination={{
-        dynamicBullets: true
-      }}
+    <Swiper      
       effect={'flip'}
       grabCursor
       navigation
@@ -42,10 +39,10 @@ const CarouselSprites = ({ sprites }: CarouselSpritesProps) => {
           <>
             <h6 className="text-center">{sprite.description}</h6>
             <img
-              className="h-36 w-36"
               key={index}
               src={sprite.img}
               alt={`sprite ${index}`}
+              style={{ width: '96px', margin: 'auto' }}
             />
           </>
         </SwiperSlide>
