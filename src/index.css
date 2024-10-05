@@ -4,7 +4,7 @@
 
 
 * {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 .swiper-slide {
@@ -20,7 +20,6 @@
 }
 .fire-type {
   background-color: #F08030;
-  /* background-color: hsl(180deg, 30%, 90%); */
 }
 .fighting-type {
   background-color: #C03028;
