@@ -1,21 +1,28 @@
 import { createBrowserRouter } from "react-router-dom";
 import PokemonList from "../components/list";
 import PokemonDetail from "../components/pokemon";
-import Header from "./root";
+import PokeTest from "../components/layout/test"
+import App from "../app";
 
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <Header />,
+    element: <App />,
+    children: [
+      {
+      path: '/list',
+      element: <PokemonList />
+      },
+      {
+        path: '/list/pokemon/:pokemonId',
+        element: <PokemonDetail />
+      },
+      {
+        path: '/test',
+        element: <PokeTest />
+      }
+    ]
   },
-  {
-    path: '/list',
-    element: <PokemonList />
-  },
-  {
-    path: '/list/pokemon/:pokemonId',
-    element: <PokemonDetail />
-  }
 ]);
 
 export default routes

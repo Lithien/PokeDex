@@ -3,12 +3,13 @@ import { RouterProvider } from 'react-router-dom'
 import './index.css'
 import { StrictMode } from 'react';
 import routes from './router/routes';
-import Header from './router/root';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme/theme';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <StrictMode>
-        <Header>
+        <ThemeProvider theme={theme}>
             <RouterProvider router={routes} />
-        </Header>
+        </ThemeProvider>
     </StrictMode>
 )
