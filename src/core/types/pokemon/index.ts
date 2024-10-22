@@ -256,7 +256,7 @@ interface PokemonAbility {
   ability: NamedAPIResource
 }
 
-interface PokemonType {
+export interface PokemonType {
   slot: number
   type: NamedAPIResource
 }
@@ -379,36 +379,42 @@ interface AbilityPokemon {
   pokemon: NamedAPIResource
 }
 
-interface EvolutionChain {
-  baby_trugger_item: NamedAPIResource
+export interface EvolutionChain {
+  baby_trugger_item?: NamedAPIResource
   id: number
   chain: ChainLink
 }
 
-interface ChainLink {
+export interface ChainLink {
   is_baby: boolean
   species: NamedAPIResource
-  evolution_details: EvolutionDetail
-  evolves_to: ChainLink
+  evolution_details: EvolutionDetail[]
+  evolves_to: ChainLink[]
 }
 
 interface EvolutionDetail {
-  item: NamedAPIResource
-  triger: NamedAPIResource
+  item?: NamedAPIResource
+  triger?: NamedAPIResource
   gender: number
-  held_item: NamedAPIResource
-  know_move: NamedAPIResource
-  know_move_type: NamedAPIResource
-  location: NamedAPIResource
+  held_item?: NamedAPIResource
+  known_move?: NamedAPIResource
+  know_move_type?: NamedAPIResource
+  location?: NamedAPIResource
   min_level: number
   min_happiness: number
   min_beauty: number
   min_affection: number
   needs_overworld_rain: boolean
-  party_species: NamedAPIResource
-  party_type: NamedAPIResource
+  party_species?: NamedAPIResource
+  party_type?: NamedAPIResource
   relative_physical_stats: number
   time_of_day: string
-  trade_species: NamedAPIResource
+  trade_species?: NamedAPIResource
   turn_upside_down: boolean
+}
+
+export type Species = {
+  name: string;
+  number?: string;
+  imageUrl?: string;
 }

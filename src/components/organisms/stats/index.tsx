@@ -9,7 +9,7 @@ interface Props {
   stats: PokemonStat[];
 }
 
-const Wrapper = styled(ShadowBox)`
+export const Wrapper = styled(ShadowBox)`
   width: 370px;
   height: auto;
   flex-direction: column;
@@ -33,9 +33,9 @@ const TitleStyled = styled(Typography)`
   font-size: 24px;
 `
 
-export const Stats = ({ stats }: Props): JSX.Element => (
-  <Wrapper mode="down">
-    <TitleStyled type="h1" weight={"bold"}>Stats</TitleStyled>
+export const Stats = ({ stats, className }: Props & { className?: string }) => (
+  <Wrapper className={className} mode="down">
+    <TitleStyled type="h1" weight="bold">Stats</TitleStyled>
     <StatWrapper>
       {stats.map(stat => (
         <CircleProgress

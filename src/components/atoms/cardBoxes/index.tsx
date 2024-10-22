@@ -15,4 +15,4 @@ const CardBoxes = ({ mode = 'horizontal', children }: Props) => {
   )
 }
 
-export default CardBoxes
+export { CardBoxes }

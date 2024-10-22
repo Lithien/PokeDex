@@ -27,8 +27,8 @@ const CircularProgress = styled.div<{ progress: number; color: string }>`
   height: 100%;
   border-radius: 50%;
   background: conic-gradient(
-    ${({ color, progress }) => `${color} ${progress * 3.6}deg`}, 
-    black ${({ progress }) => progress * 3.6}deg 360deg
+    ${({ color, progress }) => `${color} ${(progress / 255) * 360}deg`}, 
+    black ${({ progress }) => (progress / 255) * 360}deg 360deg
   );
   display: flex;
   align-items: center;

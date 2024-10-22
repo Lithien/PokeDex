@@ -1,22 +1,25 @@
 import styled from 'styled-components'
-import CardBoxes from '../../atoms/cardBoxes'
-import GrassIcon from '../../../assets/icons/grass_icon'
-import PoisonIcon from '../../../assets/icons/poison_icon'
+import { CardBoxes } from '../../atoms/cardBoxes'
+import { PokemonType } from '../../../core/types'
+import PokemonTypes from '../types'
 
 interface Props {
-  number: string
+  name?: string
+  number?: string
+  imageUrl?: string
+  types?: PokemonType[]
 }
 
-const Card = ({ number }: Props) => {
+const Card = ({ imageUrl }: Props) => {
   return (
     <CardBoxes>
       <h2>Pokemons</h2>
-      <img width={80} src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}.png`} />
+      <img width={80} src={imageUrl} />
     </CardBoxes>
   )
 }
 
-const DetailCard = ({ number }: Props) => {
+const DetailCard = ({ number, types = [], imageUrl, name }: Props) => {
   const DivInfo = styled.div`
     display: flex;
     flex-direction: column;
@@ -24,14 +27,6 @@ const DetailCard = ({ number }: Props) => {
     h1 {
       margin: 5px 0;
       font-size: 24px;
-    }
-
-    .types {
-      display: flex;
-      gap: 20px;
-      margin-top: 8px;
-      justify-content: center;
-      align-items: center;
     }
   `
 
@@ -46,18 +41,18 @@ const DetailCard = ({ number }: Props) => {
     <CardBoxes>
       <DivInfo>
         <span>#{number}</span>
-        <h1>Bulbasaur</h1>
-        <div className="types">
-          <GrassIcon />
-          <PoisonIcon />
-        </div>
+        <h1>{name}</h1>
+        <PokemonTypes types={types} />
       </DivInfo>
-      <PokemonImage src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}.png`} />
+      <PokemonImage src={imageUrl} />
     </CardBoxes>
   )
 }
 
-const DetailVerticalCard = ({ number }: Props) => {
+const DetailVerticalCard = ({ number, name, imageUrl, types = [] }: Props) => {
+  const Wrapper = styled(CardBoxes)`
+    position: relative;
+  `
   const DivInfo = styled.div`
     display: flex;
     flex-direction: column;
@@ -66,20 +61,14 @@ const DetailVerticalCard = ({ number }: Props) => {
     span {
       font-size: 14px;
       position: absolute;
-      top: 50px;
-      left: 61px;
+      top: 10px;
+      left: 20px;
     }
-
+    
     h1 {
+      text-transform: capitalize;
       margin: 10px 0 5px 0;
       font-size: 24px;
-    }
-
-    .types {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      align-items: center;
     }
   `
 
@@ -92,17 +81,14 @@ const DetailVerticalCard = ({ number }: Props) => {
   `
 
   return (
-    <CardBoxes mode='vertical'>
+    <Wrapper mode='vertical'>
       <DivInfo>
         <span>#{number}</span>
-        <h1>Bulbasaur</h1>
-        <div className="types">
-          <GrassIcon />
-          <PoisonIcon />
-        </div>
+        <h1>{name}</h1>
+        <PokemonTypes types={types} />
       </DivInfo>
-      <PokemonImage src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}.png`} />
-    </CardBoxes>
+      <PokemonImage src={imageUrl} />
+    </Wrapper>
   )
 }
 

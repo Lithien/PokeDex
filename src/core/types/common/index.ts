@@ -1,5 +1,3 @@
-import { Languages } from "../languages"
-
 export interface ApiResource {
   url: string
 }

@@ -5,8 +5,8 @@ import pluginReact from "eslint-plugin-react";
 
 
 export default [
-  {files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"]},
-  {languageOptions: { globals: globals.browser }},
+  { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
+  { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
@@ -16,6 +16,8 @@ export default [
       '@typescript-eslint/strict-boolean-expressions': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/no-require-imports': 'off',
-      'no-unexpected-multiline': 'off'
-  }}
+      'no-unexpected-multiline': 'off',
+      'react/jsx-no-comment-textnodes': 'off'
+    }
+  }
 ];

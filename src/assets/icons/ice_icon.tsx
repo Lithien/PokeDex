@@ -1,5 +1,5 @@
 const IceIcon = () => (
-  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="50" height="50" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M30 15C30 23.2843 23.2843 30 15 30C6.71573 30 0 23.2843 0 15C0 6.71573 6.71573 0 15 0C23.2843 0 30 6.71573 30 15Z" fill="#75D0C1" />
     <path fillRule="evenodd" clipRule="evenodd" d="M19.0095 8.22006L19.0587 12.5435L15.2878 14.3537L15.2413 10.2716L19.0095 8.22006Z" fill="white" />
     <path fillRule="evenodd" clipRule="evenodd" d="M22.7897 15.0327L19.0567 17.1679L15.3215 15.0293L19.0548 13.0683L22.7897 15.0327Z" fill="white" />

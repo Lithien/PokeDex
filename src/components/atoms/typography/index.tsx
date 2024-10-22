@@ -12,6 +12,7 @@ interface Props {
 const StyledTypography = styled(({ as: Component = 'div', ...props }) => <Component {...props} />)`
   font-weight: ${({ weight }) => weight || 400};
   color: ${({ color }) => (color ? `${color}` : '#000')};
+  text-transform: capitalize;
 `
 
 const Typography = ({ type, children, ...props }: Props) => (

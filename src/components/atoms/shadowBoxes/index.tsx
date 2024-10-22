@@ -13,6 +13,7 @@ const ShadowBox = styled.div<Props>`
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+    margin: 10px;
   `
 
 export default ShadowBox
